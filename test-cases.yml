@@ -195,3 +195,114 @@ summary: |
     - Нажимаем кнопку "Show" выбранной игры
   expected-result: |
     Наблюдатель может взаимодействовать только с чатом,сменой языка,выводом,а также просматривать написанный игроками код
+
+summary: |
+    Проверка собственного профиля
+  requirement: |
+    Пользователь может просмотреть свой профиль, в профиле указывается сколько игр сыграл пользователь и результаты по ним, а также можно просмотреть записи сыгранных игр
+  prerequisites:
+    Открыта главная страница
+    https://codebattle.hexlet.io/#lobby
+  test-data: |
+    empty
+  steps:
+    - Нажимаем на свой никнейм/кубки/рейтинг/аватарку
+  expected-result: |
+    Открывается наш профиль в разделе "statistics" указывается кол-во игр и их результаты в разделе "completed games" можно просмотреть запись сыгранных игр
+    
+summary: |
+    Проверка ограничения никнейма на кол-во символов при регистрации
+  requirement: |
+    При регистрации никнейм пользователя должен состоять из 5-15 символов
+  prerequisites:
+    Открыта страница регистрации
+    https://codebattle.hexlet.io/users/new?locale=en&next=%2F
+  test-data: |
+    Nickname = qwertyuiopasdfgqwertyuiopasdfgqwertyuiopasdfgqwertyuiopasdfgqwertyuiopasdfgqwertyuiopasdfgqwertyuiopasdfgqwertyuiopasdfg
+    Email = closedoor2@mail.ru
+    Password = 12345678
+  steps:
+    - В поле "Nickname" вводим qwertyuiopasdfgqwertyuiopasdfgqwertyuiopasdfgqwertyuiopasdfgqwertyuiopasdfgqwertyuiopasdfgqwertyuiopasdfgqwertyuiopasdfg
+    - В поле "Email" вводим closedoor2@mail.ru
+    - В поле "Password" 12345678
+    - Нажимаем на кнопку "Submit"
+  expected-result: |
+    Пользователь не может зарегистрироваться, под полем "Nickname" появляется сообщение "Длина никнейма 5-15 символов"
+    
+summary: |
+    Проверка ограничения пароля на кол-во символов при регистрации№1
+  requirement: |
+    При регистрации пользователя пароль должен состоять из не менее 5 и не более 15 символов
+  prerequisites:
+    Открыта страница регистрации
+    https://codebattle.hexlet.io/users/new?locale=en&next=%2F
+  test-data: |
+    Nickname = qwertyuiopasdfg
+    Email = closedoor2@mail.ru
+    Password = 123
+  steps:
+    - В поле "Nickname" вводим qwertyuiopasdfg
+    - В поле "Email" вводим closedoor2@mail.ru
+    - В поле "Password" 123
+    - Нажимаем на кнопку "Submit"
+  expected-result: |
+    Пользователь не может зарегистрироваться, под полем "Password" появляется сообщение "Длина пароля 5-15 символов"
+    
+summary: |
+    Проверка ограничения пароля на кол-во символов при регистрации№2
+  requirement: |
+    При регистрации пользователя пароль должен состоять из не менее 5 и не более 15 символов
+  prerequisites:
+    Открыта страница регистрации
+    https://codebattle.hexlet.io/users/new?locale=en&next=%2F
+  test-data: |
+    Nickname = qwertyuiopasdfg
+    Email = closedoor2@mail.ru
+    Password = 1234567890123456
+  steps:
+    - В поле "Nickname" вводим qwertyuiopasdfg
+    - В поле "Email" вводим closedoor2@mail.ru
+    - В поле "Password" 1234567890123456
+    - Нажимаем на кнопку "Submit"
+  expected-result: |
+    Пользователь не может зарегистрироваться, под полем "Password" появляется сообщение "Длина пароля 5-15 символов"
+    
+summary: |
+    Проверка на аналогичный никнейм при регистрации
+  requirement: |
+    Пользователь не может зарегистрироваться если уже существует пользователь с таким никнеймом
+  prerequisites:
+    Открыта страница регистрации
+    https://codebattle.hexlet.io/users/new?locale=en&next=%2F
+    Создан пользователь с никнеймом qwertyuiopasdfg почтой closedoor2@mail.ru паролем 12345678
+  test-data: |
+    Nickname = qwertyuiopasdfg
+    Email = closedoor3@mail.ru
+    Password = 12345678
+  steps:
+    - В поле "Nickname" вводим qwertyuiopasdfg
+    - В поле "Email" вводим closedoor3@mail.ru
+    - В поле "Password" 12345678
+    - Нажимаем на кнопку "Submit"
+  expected-result: |
+    Пользователь не может зарегистрироваться, под полем "Nickname" появляется сообщение "Никнейм занят"
+    
+summary: |
+    Проверка на аналогичный email при регистрации
+  requirement: |
+    Пользователь не может зарегистрироваться если уже существует пользователь с таким email
+  prerequisites:
+    Открыта страница регистрации
+    https://codebattle.hexlet.io/users/new?locale=en&next=%2F
+    Создан пользователь с никнеймом qwertyuiopasdfg почтой closedoor2@mail.ru паролем 12345678
+  test-data: |
+    Nickname = qwertyuiopasdfg
+    Email = closedoor2@mail.ru
+    Password = 1234567890
+  steps:
+    - В поле "Nickname" вводим qwertyuiopasdfg
+    - В поле "Email" вводим closedoor3@mail.ru
+    - В поле "Password" 123456789
+    - Нажимаем на кнопку "Submit"
+  expected-result: |
+    Пользователь не может зарегистрироваться, под полем "Email" появляется сообщение "Почта уже используется"
