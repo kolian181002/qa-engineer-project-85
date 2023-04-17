@@ -296,13 +296,13 @@
     https://codebattle.hexlet.io/users/new?locale=en&next=%2F
     Создан пользователь с никнеймом qwertyuiopasdfg почтой closedoor2@mail.ru паролем 12345678
   test-data: |
-    Nickname = qwertyuiopasdfg
+    Nickname = qwertyuiopasdfga
     Email = closedoor2@mail.ru
-    Password = 1234567890
+    Password = 12345678
   steps:
-    - В поле "Nickname" вводим qwertyuiopasdfg
-    - В поле "Email" вводим closedoor3@mail.ru
-    - В поле "Password" 123456789
+    - В поле "Nickname" вводим qwertyuiopasdfga
+    - В поле "Email" вводим closedoor2@mail.ru
+    - В поле "Password" 12345678
     - Нажимаем на кнопку "Submit"
   expected-result: |
     Пользователь не может зарегистрироваться, под полем "Email" появляется сообщение "Почта уже используется"
