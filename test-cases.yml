@@ -1,0 +1,197 @@
+---
+- summary: |
+    Проверка входа пользователя с существующими email и паролем
+  requirement: |
+    При верном вводе email и пароля пользователь должен войти в систему
+  prerequisites: |
+    Открыта страница логина
+    https://codebattle.hexlet.io/session/new?locale=en&next=%2F
+  test-data: |
+    email = hoak@mail.ru Пароль = 123456
+  steps:
+    - Вводим email
+    - Вводим пароль
+    - Нажимаем кнопку «Submit»
+  expected-result: |
+    Пользователь должен попасть на главную страницу
+
+- summary: |
+    Проверка входа пользователя с несуществующими паролем
+  requirement: |
+    При неправильном пароле пользователь должен получить сообщение об ошибке
+  prerequisites:
+    Открыта страница логина
+    https://codebattle.hexlet.io/session/new?locale=en&next=%2F
+  test-data: |
+    email = hoak@mail.ru Пароль = 12345
+  steps:
+    - Вводим email
+    - Вводим пароль
+    - Нажимаем кнопку «Submit»
+  expected-result: |
+    Должно появиться сообщение о неверном email или пароле
+    
+- summary: |
+    Проверка входа пользователя с несуществующими email
+  requirement: |
+    При неправильном email пользователь должен получить сообщение об ошибке
+  prerequisites:
+    Открыта страница логина
+    https://codebattle.hexlet.io/session/new?locale=en&next=%2F
+  test-data: |
+    email = hoak@mail.rul Пароль = 123456
+  steps:
+    - Вводим email
+    - Вводим пароль
+    - Нажимаем кнопку «Submit»
+  expected-result: |
+    Должно появиться сообщение о неверном email или пароле
+    
+- summary: |
+    Проверка входа пользователя с помощью аккаунта github
+  requirement: |
+    При подключении через гитхаб никнейм должен быть таким же как на аккунте в github
+  prerequisites:
+    Открыта страница логина
+    https://codebattle.hexlet.io/session/new?locale=en&next=%2F
+    В браузере сохранён аккаунт в github
+  test-data: |
+    empty
+  steps:
+    - Нажимаем кнопку "Sign in with Github"
+  expected-result: |
+    Пользователь должен попасть на главную страницу
+    
+- summary: |
+    Проверка входа пользователя с помощью аккаунта discord
+  requirement: |
+    При подключении через discord никнейм пользователя должен быть таким же как на аккаунте discord
+  prerequisites:
+    Открыта страница логина
+    https://codebattle.hexlet.io/session/new?locale=en&next=%2F
+    В браузере сохранён аккаунт в discord
+  test-data: |
+    empty
+  steps:
+    - Нажимаем кнопку "Sign in with Discord
+  expected-result: |
+    Пользователь должен попасть на главную страницу
+    
+summary: |
+    Проверка создания игры с другим пользователем
+  requirement: |
+    При создании игры с другим пользователем на главной странице появляется лобби с игрой когда другой пользователь нажимает кнопку "fight" игра запускается
+  prerequisites:
+    Открыта главная страница
+    https://codebattle.hexlet.io/#lobby
+  test-data: |
+    empty
+  steps:
+    - Нажимаем кнопку "Create a game"
+  expected-result: |
+    Когда другой пользователь нажимает кнопку "fight" запускается игра
+    
+summary: |
+    Проверка создания игры с другом
+  requirement: |
+    При создании игры с другом появляется допольнительное окно с выбором соперника, сопернику приходит уведомление с приглашением на игру
+  prerequisites:
+    Открыта главная страница
+    https://codebattle.hexlet.io/#lobby
+  test-data: |
+    empty
+  steps:
+    - Нажимаем кнопку "Create a game"
+    - В появившемся окне нажимаем кнопку "With a friend"
+  expected-result: |
+    Появилось допольнительное окно с выбором сопреника, сопернику пришло уведомление с приглашением на игру
+    
+summary: |
+    Проверка создания игры с ботом
+  requirement: |
+    При создании игры с ботом игра сразу же запускается противником пользователя становится бот
+    Открыта главная страница
+    https://codebattle.hexlet.io/#lobby
+  test-data: |
+    empty
+  steps:
+    - Нажимаем кнопку "Create a game"
+    - В появившемся окне нажимаем кнопку "With a bot"
+  expected-result: |
+    Запустилась игра против бота
+    
+summary: |
+    Проверка просмотра чужого профиля
+  requirement: |
+    Пользователь может смотреть чужой профиль
+  prerequisites:
+    Открыта главная страница
+    https://codebattle.hexlet.io/#lobby
+  test-data: |
+    empty
+  steps:
+    - Нажимаем на никнейм выбранного пользователя
+  expected-result: |
+    Открывается страница с профилем выбранного пользователя 
+    
+summary: |
+    Проверка кнопки переключения языка в игре
+  requirement: |
+    При выборе русского языка задание переводится на русский язык
+  prerequisites:
+    Открыта главная страница
+    https://codebattle.hexlet.io/#lobby
+  test-data: |
+    empty
+  steps:
+    - Нажимаем кнопку "Create a game"
+    - В появившемся окне нажимаем кнопку "With a bot"
+    - Нажимаем на кнопку "EN"
+    - В появившемся окне нажимаем "RU"
+  expected-result: |
+    Задание перевелось на русский язык
+    
+summary: |
+    Проверка кнопки переключения языка в игре
+  requirement: |
+    При выборе английского языка задание переводится на английский язык
+  prerequisites:
+    Открыта главная страница
+    https://codebattle.hexlet.io/#lobby
+  test-data: |
+    empty
+  steps:
+    - Нажимаем кнопку "Create a game"
+    - В появившемся окне нажимаем кнопку "With a bot"
+    - Нажимаем на кнопку "RU"
+    - В появившемся окне нажимаем "EN"
+  expected-result: |
+    Задание перевелось на английский язык
+    
+summary: |
+    Проверка просмотра чужой игры
+  requirement: |
+    Пользователь может смотреть за чужой игрой
+  prerequisites:
+    Открыта главная страница
+    https://codebattle.hexlet.io/#lobby
+  test-data: |
+    empty
+  steps:
+    - Нажимаем кнопку "Show" выбранной игры
+  expected-result: |
+    Пользователя переносит в выбранную игру в роли наблюдателя
+    
+summary: |
+    Проверка действий пользователя в роли наблюдателя в чужой игре
+  requirement: |
+    Наблюдатель может писать в чат просмотреть гайд по игре сменить язык задания (отображается только у него) и просмотреть вывод по написанному коду
+  prerequisites:
+    Открыта главная страница
+    https://codebattle.hexlet.io/#lobby
+  test-data: |
+    empty
+  steps:
+    - Нажимаем кнопку "Show" выбранной игры
+  expected-result: |
+    Наблюдатель может взаимодействовать только с чатом,сменой языка,выводом,а также просматривать написанный игроками код
